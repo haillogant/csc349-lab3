@@ -12,16 +12,19 @@ def editDistance(word1, word2):
     for j in range(m + 1):
         E[0][j] = j
 
+    #main loop
     for i in range(1, n + 1):
         for j in range(1, m + 1):
             if word1[i - 1] == word2[j - 1]:
                 cost = 0
             else: cost = 1
 
+            #insert, delete, sub it out
             E[i][j] = min(E[i - 1][j] + 1, E[i][j - 1] + 1, E[i - 1][j - 1] + cost)
 
     return E[n][m]
 
+# execute the program
 def main():
     word1 = sys.argv[1]
     word2 = sys.argv[2]
